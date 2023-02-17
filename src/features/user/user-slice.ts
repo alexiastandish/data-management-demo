@@ -6,6 +6,7 @@ import { fetchUser } from './user-api'
 import axios from 'axios'
 
 export interface UserState {
+    // or api types in dashboard
     data: UserPayload
     status: 'idle' | 'loading' | 'failed'
 }
@@ -39,9 +40,9 @@ export const updateUser = createAsyncThunk(
     'user/updateUser',
     async (values: UserForm, { getState }) => {
         const state = getState() as RootState
-        console.log('values', values)
+
         const userResponse: UserPayload = {
-            ...state.user.data, //
+            ...state.user.data,
             flavor: values.flavor.value,
             id: state.user.data.id,
             website: values.website,
@@ -87,7 +88,6 @@ export const userSlice = createSlice({
                 state.status = 'loading'
             })
             .addCase(updateUser.fulfilled, (state, { payload }) => {
-                console.log('payload', payload)
                 state.status = 'idle'
                 state.data = {
                     id: payload.id,
