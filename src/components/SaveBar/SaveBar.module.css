@@ -1,0 +1,15 @@
+.saveBar {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    background: rgb(139, 214, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saveBar > button {
+    margin: 5px;
+}

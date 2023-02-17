@@ -1,0 +1,38 @@
+// NAVIGATION slice
+
+{
+    "loading": "",
+    "error": null,
+    "initialized": false,
+    "data": {
+        // to select all menu items to iterate through, use selectAll entity adapter selector
+        // for setting the default values in useForm hook, use value from selector above and useFieldArray hook
+        // this will automatically append ids onto the menuItems for the implementation of react dnd kit
+        // for making updates to menuItems' values in dnd kit, use update menthod provided from useFieldArray hook
+        // for adding or removing menuItems, use append or remove methods provided from useFieldArray hook
+        // for arranging menuItem's order, use append or remove methods provided from useFieldArray hook
+
+        // ex: update(id, {label: "", destination: "", icons: {left: "", right: ""}})
+        // ex: append({label: "", destination: "", icons: {left: "", right: ""}})
+        // ex: remove(id)
+
+        "entities": {
+            "abcdef": { "title": "", "destination": "", "icon": "" },
+            "ghijk": { "title": "", "destination": "", "icon": "" },
+            "lmnop": { "title": "", "destination": "", "icon": "" }
+        },
+        "order": ["ghijk", "abcdef", "lmnop"],
+        "placement": "top",
+        "colors": {
+            "background": "#FFFFFF",
+            // what is difference between icon and icon and text colors
+            "icon": "#000000",
+            "iconAndText": "#232323"
+        },
+        // WIP
+        "topLeftIcon": {},
+        // WIP
+        "topRightIcon": {},
+        "menuBackgroundImage": ""
+    }
+}
