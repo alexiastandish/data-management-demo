@@ -10,7 +10,8 @@ const selectUserFormData = (state: RootState) => {
             label: state.user.data.flavor || '',
             value: state.user.data.flavor || '',
         },
-        pets: state.user.data.pets || [],
+        // TODO
+        pets: [],
     }
 }
 

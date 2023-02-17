@@ -7,9 +7,10 @@ export interface UserCompany {
 export interface Pet {
     type: 'dog' | 'cat' | 'bird' | 'fish'
     name: string
+    id: string
 }
 
-export interface UserPayload {
+export type User = {
     id: number | null
     username: string
     email: string
@@ -17,5 +18,5 @@ export interface UserPayload {
     // field value gets updated to mirror shape needed for payload in order to be saved correctly to db
     company: UserCompany
     flavor: string
-    pets: Pet[]
+    petIds: string[]
 }

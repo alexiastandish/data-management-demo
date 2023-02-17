@@ -1,7 +1,4 @@
-type Pet = {
-    type: 'dog' | 'cat' | 'bird' | 'fish' | null
-    name: string
-}
+import { Pet } from './api-types'
 
 export interface UserForm {
     username: string

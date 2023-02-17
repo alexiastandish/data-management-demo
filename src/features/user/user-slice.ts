@@ -1,13 +1,13 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 import { UserForm } from '../../types/form-types'
-import { UserPayload } from '../../types/payload-types'
+import { User } from '../../types/api-types'
 import { fetchUser } from './user-api'
 import axios from 'axios'
 
 export interface UserState {
     // or api types in dashboard
-    data: UserPayload
+    data: User
     status: 'idle' | 'loading' | 'failed'
 }
 
@@ -23,7 +23,7 @@ const initialState: UserState = {
             bs: '',
         },
         flavor: '',
-        pets: [],
+        petIds: [],
     },
     status: 'loading',
 }
@@ -41,13 +41,15 @@ export const updateUser = createAsyncThunk(
     async (values: UserForm, { getState }) => {
         const state = getState() as RootState
 
-        const userResponse: UserPayload = {
+        const petIds = values.pets.map((pet) => pet.id)
+
+        const userResponse: User = {
             ...state.user.data,
             flavor: values.flavor.value,
             id: state.user.data.id,
             website: values.website,
             company: { ...state.user.data.company, name: values.company },
-            pets: values.pets,
+            petIds: petIds,
         }
 
         const res = await axios.put(
@@ -78,7 +80,7 @@ export const userSlice = createSlice({
                     website: payload.website,
                     company: payload.company,
                     flavor: payload?.flavor || '',
-                    pets: payload.pets || [],
+                    petIds: payload.petIds || [],
                 }
             })
             .addCase(fetchUserAsync.rejected, (state) => {
@@ -96,7 +98,7 @@ export const userSlice = createSlice({
                     website: payload.website,
                     company: payload.company,
                     flavor: payload?.flavor || '',
-                    pets: payload.pets || [],
+                    petIds: payload.petIds || [],
                 }
             })
             .addCase(updateUser.rejected, (state) => {
